@@ -1,4 +1,4 @@
-package com.tomlongridge.pealrecords.domain;
+package com.tomlongridge.pealrecords.service.domain;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -29,7 +29,7 @@ public class PealMethod implements Serializable {
     
     @Column
     @Min(1)
-    private int changes;
+    private Integer changes;
     
     public Method getMethod() {
         return method;
@@ -47,11 +47,11 @@ public class PealMethod implements Serializable {
         this.peal = peal;
     }
 
-    public int getChanges() {
+    public Integer getChanges() {
         return changes;
     }
 
-    public void setChanges(int changes) {
+    public void setChanges(Integer changes) {
         this.changes = changes;
     }
     

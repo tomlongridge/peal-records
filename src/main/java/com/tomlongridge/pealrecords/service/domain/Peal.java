@@ -1,7 +1,7 @@
-package com.tomlongridge.pealrecords.domain;
+package com.tomlongridge.pealrecords.service.domain;
 
-import java.util.Date;
-import java.util.Set;
+import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,7 +27,7 @@ public class Peal {
     
     @Column(name = "dateRung")
     @NotNull
-    private Date dateRung;
+    private LocalDate dateRung;
     
     @ManyToOne
     @JoinColumn(name = "tower")
@@ -36,10 +36,10 @@ public class Peal {
     @Column
     @Min(1)
     @NotNull
-    private int changes;
+    private Integer changes;
     
     @OneToMany(mappedBy = "peal", fetch = FetchType.LAZY)
-    private Set<PealMethod> methods;
+    private List<PealMethod> methods;
 
     public Long getId() {
         return id;
@@ -49,11 +49,11 @@ public class Peal {
         this.id = id;
     }
 
-    public Date getDateRung() {
+    public LocalDate getDateRung() {
         return dateRung;
     }
 
-    public void setDateRung(Date dateRung) {
+    public void setDateRung(LocalDate dateRung) {
         this.dateRung = dateRung;
     }
 
@@ -65,19 +65,19 @@ public class Peal {
         this.tower = tower;
     }
 
-    public int getChanges() {
+    public Integer getChanges() {
         return changes;
     }
 
-    public void setChanges(int changes) {
+    public void setChanges(Integer changes) {
         this.changes = changes;
     }
     
-    public Set<PealMethod> getMethods() {
+    public List<PealMethod> getMethods() {
         return methods;
     }
     
-    public void setMethods(Set<PealMethod> methods) {
+    public void setMethods(List<PealMethod> methods) {
         this.methods = methods;
     }
 

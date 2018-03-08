@@ -1,4 +1,4 @@
-package com.tomlongridge.pealrecords.domain;
+package com.tomlongridge.pealrecords.service.domain;
 
 import java.util.Set;
 

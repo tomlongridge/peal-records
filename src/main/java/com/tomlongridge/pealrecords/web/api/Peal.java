@@ -10,11 +10,17 @@ public class Peal {
     
     private LocalDate dateRung;
     
-    private Tower tower;
-    
     private Integer changes;
     
+    private Long duration;
+    
+    private Tower tower;
+    
     private List<PealMethod> methods;
+    
+    private List<PealRinger> ringers;
+    
+    private List<String> footnotes;
     
     public Long getId() {
         return id;
@@ -32,20 +38,28 @@ public class Peal {
         this.dateRung = dateRung;
     }
 
-    public Tower getTower() {
-        return tower;
-    }
-
-    public void setTower(Tower tower) {
-        this.tower = tower;
-    }
-
     public Integer getChanges() {
         return changes;
     }
 
     public void setChanges(Integer changes) {
         this.changes = changes;
+    }
+
+    public Long getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Long duration) {
+        this.duration = duration;
+    }
+
+    public Tower getTower() {
+        return tower;
+    }
+
+    public void setTower(Tower tower) {
+        this.tower = tower;
     }
     
     public List<PealMethod> getMethods() {
@@ -57,6 +71,28 @@ public class Peal {
     
     public void setMethods(List<PealMethod> methods) {
         this.methods = methods;
+    }
+
+    public List<PealRinger> getRingers() {
+        if (ringers == null) {
+            ringers = new ArrayList<PealRinger>();
+        }
+        return ringers;
+    }
+
+    public void setRingers(List<PealRinger> ringers) {
+        this.ringers = ringers;
+    }
+
+    public List<String> getFootnotes() {
+        if (footnotes == null) {
+            footnotes = new ArrayList<String>();
+        }
+        return footnotes;
+    }
+
+    public void setFootnotes(List<String> footnotes) {
+        this.footnotes = footnotes;
     }
 
 }

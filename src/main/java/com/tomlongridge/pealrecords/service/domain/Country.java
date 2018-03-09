@@ -20,7 +20,7 @@ public class Country {
     @Column(name = "countryId")
     private Long id;
     
-    @Column(name = "name")
+    @Column
     private String name;
     
     @OneToMany(mappedBy = "country", fetch = FetchType.LAZY)

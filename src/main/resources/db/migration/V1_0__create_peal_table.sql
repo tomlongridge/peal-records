@@ -47,12 +47,26 @@ CREATE TABLE methods (
 
 );
 
+CREATE TABLE ringers (
+
+    ringerId          BIGINT             NOT NULL AUTO_INCREMENT,
+    forename          VARCHAR(100)       NOT NULL,
+    middleInitials    VARCHAR(100)       ,
+    surname           VARCHAR(100)       NOT NULL,
+    homeTower         BIGINT             ,
+
+	PRIMARY KEY (ringerId),
+	FOREIGN KEY (homeTower) REFERENCES towers(towerId) ON DELETE RESTRICT
+
+);
+
 CREATE TABLE peals (
 
 	pealId      BIGINT             NOT NULL AUTO_INCREMENT,
 	dateRung    DATE               ,
 	tower       BIGINT             ,
 	changes     MEDIUMINT UNSIGNED NOT NULL,
+	duration	BIGINT             ,
 	
 	PRIMARY KEY (pealId),
 	FOREIGN KEY (tower) REFERENCES towers(towerId) ON DELETE RESTRICT
@@ -67,5 +81,28 @@ CREATE TABLE peal_methods (
 	PRIMARY KEY (peal, method),
 	FOREIGN KEY (peal) REFERENCES peals(pealId) ON DELETE RESTRICT,
 	FOREIGN KEY (method) REFERENCES methods(methodId) ON DELETE RESTRICT
+
+);
+
+CREATE TABLE peal_ringers (
+
+    peal        BIGINT             NOT NULL,
+    ringer      BIGINT             NOT NULL,
+    bell        SMALLINT           NOT NULL,
+
+	PRIMARY KEY (peal, ringer, bell),
+	FOREIGN KEY (peal) REFERENCES peals(pealId) ON DELETE RESTRICT,
+	FOREIGN KEY (ringer) REFERENCES ringers(ringerId) ON DELETE RESTRICT
+
+);
+
+CREATE TABLE peal_footnotes (
+
+	footnoteId  BIGINT             NOT NULL AUTO_INCREMENT,
+    peal        BIGINT             NOT NULL,
+    text        VARCHAR(1024)      NOT NULL,
+
+	PRIMARY KEY (footnoteId),
+	FOREIGN KEY (peal) REFERENCES peals(pealId) ON DELETE RESTRICT
 
 );

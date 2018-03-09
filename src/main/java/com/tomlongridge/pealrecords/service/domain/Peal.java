@@ -1,5 +1,6 @@
 package com.tomlongridge.pealrecords.service.domain;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -25,21 +26,30 @@ public class Peal {
     @Column(name = "pealId")
     private Long id;
     
-    @Column(name = "dateRung")
+    @Column
     @NotNull
     private LocalDate dateRung;
-    
-    @ManyToOne
-    @JoinColumn(name = "tower")
-    private Tower tower;
     
     @Column
     @Min(1)
     @NotNull
     private Integer changes;
     
+    @Column
+    private Duration duration;
+    
+    @ManyToOne
+    @JoinColumn(name = "tower")
+    private Tower tower;
+    
     @OneToMany(mappedBy = "peal", fetch = FetchType.LAZY)
     private List<PealMethod> methods;
+    
+    @OneToMany(mappedBy = "peal", fetch = FetchType.LAZY)
+    private List<PealRinger> ringers;
+    
+    @OneToMany(mappedBy = "peal", fetch = FetchType.LAZY)
+    private List<PealFootnote> footnotes;
 
     public Long getId() {
         return id;
@@ -57,20 +67,28 @@ public class Peal {
         this.dateRung = dateRung;
     }
 
-    public Tower getTower() {
-        return tower;
-    }
-
-    public void setTower(Tower tower) {
-        this.tower = tower;
-    }
-
     public Integer getChanges() {
         return changes;
     }
 
     public void setChanges(Integer changes) {
         this.changes = changes;
+    }
+
+    public Duration getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Duration duration) {
+        this.duration = duration;
+    }
+
+    public Tower getTower() {
+        return tower;
+    }
+
+    public void setTower(Tower tower) {
+        this.tower = tower;
     }
     
     public List<PealMethod> getMethods() {
@@ -79,6 +97,22 @@ public class Peal {
     
     public void setMethods(List<PealMethod> methods) {
         this.methods = methods;
+    }
+
+    public List<PealRinger> getRingers() {
+        return ringers;
+    }
+
+    public void setRingers(List<PealRinger> ringers) {
+        this.ringers = ringers;
+    }
+
+    public List<PealFootnote> getFootnotes() {
+        return footnotes;
+    }
+
+    public void setFootnotes(List<PealFootnote> footnotes) {
+        this.footnotes = footnotes;
     }
 
 }

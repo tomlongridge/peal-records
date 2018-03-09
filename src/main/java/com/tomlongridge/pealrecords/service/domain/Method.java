@@ -19,7 +19,7 @@ public class Method {
     @Column(name = "methodId")
     private Long id;
     
-    @Column(name = "name")
+    @Column
     private String name;
     
     @OneToMany(mappedBy = "method")

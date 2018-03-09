@@ -7,20 +7,20 @@ import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.convert.support.GenericConversionService;
 
+/**
+ * Registers extending classes with the ConversionService allowing nested
+ * converters.
+ *  
+ * @author Tom
+ *
+ * @param <S> the source type
+ * @param <T> the target type
+ */
 public abstract class AutoRegisteredConverter<S, T> implements Converter<S, T> {
     
+    @Autowired
     private ConversionService conversionService;
  
-    public ConversionService getConversionService() {
-        return conversionService;
-    }
- 
-    @Autowired
-    public void setConversionService(ConversionService conversionService) {
-        this.conversionService = conversionService;
-    }
- 
-    @SuppressWarnings("unused") // the IoC container will call @PostConstruct methods
     @PostConstruct
     private void register() {
         if (conversionService instanceof GenericConversionService) {

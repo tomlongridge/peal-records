@@ -14,7 +14,7 @@ public class CountryConverter extends AutoRegisteredConverter<com.tomlongridge.p
         
         final Country target = new Country();
         
-        target.setId(source.getId());
+        target.setID(source.getId());
         target.setName(source.getName());
         
         return target;

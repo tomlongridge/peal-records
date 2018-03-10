@@ -1,16 +1,19 @@
 package com.tomlongridge.pealrecords.web.api;
 
-public class Method {
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class Method extends EmbeddedResource {
     
     private Long id;
     
     private String name;
-    
-    public Long getId() {
+
+    @JsonProperty("id")
+    public Long getID() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setID(Long id) {
         this.id = id;
     }
 

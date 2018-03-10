@@ -1,6 +1,8 @@
 package com.tomlongridge.pealrecords.web.api;
 
-public class County {
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class County extends EmbeddedResource {
     
     private Long id;
     
@@ -8,11 +10,12 @@ public class County {
     
     private Country country;
 
-    public Long getId() {
+    @JsonProperty("id")
+    public Long getID() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setID(Long id) {
         this.id = id;
     }
 

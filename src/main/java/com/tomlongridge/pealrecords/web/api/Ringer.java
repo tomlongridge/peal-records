@@ -1,6 +1,11 @@
 package com.tomlongridge.pealrecords.web.api;
 
-public class Ringer {
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+public class Ringer extends EmbeddedResource {
     
     private Long id;
     
@@ -9,14 +14,17 @@ public class Ringer {
     private String middleInitials;
     
     private String surname;
-    
+
+    @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
+    @JsonIdentityReference(alwaysAsId=true)
     private Tower homeTower;
-    
-    public Long getId() {
+
+    @JsonProperty("id")
+    public Long getID() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setID(Long id) {
         this.id = id;
     }
 

@@ -14,7 +14,7 @@ public class MethodConverter extends AutoRegisteredConverter<com.tomlongridge.pe
         
         final Method target = new Method();
         
-        target.setId(source.getId());
+        target.setID(source.getId());
         target.setName(source.getName());
         
         return target;

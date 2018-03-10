@@ -4,7 +4,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Peal {
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class Peal extends EmbeddedResource {
     
     private Long id;
     
@@ -21,12 +23,13 @@ public class Peal {
     private List<PealRinger> ringers;
     
     private List<String> footnotes;
-    
-    public Long getId() {
+
+    @JsonProperty("id")
+    public Long getID() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setID(Long id) {
         this.id = id;
     }
 

@@ -20,7 +20,7 @@ public class RingerConverter extends AutoRegisteredConverter<com.tomlongridge.pe
         
         final Ringer target = new Ringer();
         
-        target.setId(source.getId());
+        target.setID(source.getId());
         target.setForename(source.getForename());
         target.setMiddleInitials(source.getMiddleInitials());
         target.setSurname(source.getSurname());

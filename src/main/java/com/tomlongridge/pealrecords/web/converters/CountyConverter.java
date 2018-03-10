@@ -20,7 +20,7 @@ public class CountyConverter extends AutoRegisteredConverter<com.tomlongridge.pe
         
         final County target = new County();
         
-        target.setId(source.getId());
+        target.setID(source.getId());
         target.setName(source.getName());
         target.setCountry(converter.convert(source.getCountry(), Country.class));
         

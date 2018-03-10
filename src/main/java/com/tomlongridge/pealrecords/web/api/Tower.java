@@ -1,6 +1,9 @@
 package com.tomlongridge.pealrecords.web.api;
 
-public class Tower {
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class Tower extends EmbeddedResource {
     
     private Long id;
     
@@ -12,11 +15,12 @@ public class Tower {
     
     private County county;
     
-    public Long getId() {
+    public Long getID() {
         return id;
     }
 
-    public void setId(Long id) {
+    @JsonProperty("id")
+    public void setID(Long id) {
         this.id = id;
     }
 
@@ -44,12 +48,13 @@ public class Tower {
         this.town = town;
     }
 
+    @JsonIgnore
     public County getCounty() {
         return county;
     }
 
     public void setCounty(County county) {
-        this.county = county;
+        super.embed("county", county);
     }
 
 }

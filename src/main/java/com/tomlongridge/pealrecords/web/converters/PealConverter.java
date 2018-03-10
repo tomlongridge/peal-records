@@ -22,7 +22,7 @@ public class PealConverter extends AutoRegisteredConverter<com.tomlongridge.peal
         
         final Peal target = new Peal();
         
-        target.setId(source.getId());
+        target.setID(source.getId());
         target.setDateRung(source.getDateRung());
         target.setChanges(source.getChanges());
         target.setDuration(source.getDuration().toMinutes());

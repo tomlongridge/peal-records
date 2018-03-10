@@ -7,26 +7,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tomlongridge.pealrecords.service.PealService;
+import com.tomlongridge.pealrecords.service.TowerService;
 import com.tomlongridge.pealrecords.service.exceptions.EntityNotFoundException;
-import com.tomlongridge.pealrecords.web.api.Peal;
+import com.tomlongridge.pealrecords.web.api.Tower;
 
 @RestController
-@RequestMapping("/peals")
-public class PealController {
+@RequestMapping("/towers")
+public class TowerController {
     
     @Autowired
-    private PealService pealService;
+    private TowerService towerService;
     
     @Autowired
     private ConversionService converter;
 
     @RequestMapping("/{id}")
-    public Peal getPeal(@PathVariable final Long id) throws EntityNotFoundException {
-        Peal peal = converter.convert(pealService.get(id), Peal.class);
-        peal.add(ControllerLinkBuilder.linkTo(PealController.class).slash(peal.getID()).withSelfRel());
-        peal.getTower().add(ControllerLinkBuilder.linkTo(TowerController.class).slash(peal.getTower().getID()).withSelfRel());
-        return peal;
+    public Tower getTower(@PathVariable final Long id) throws EntityNotFoundException {
+        Tower tower = converter.convert(towerService.get(id), Tower.class);
+        tower.add(ControllerLinkBuilder.linkTo(TowerController.class).slash(tower.getID()).withSelfRel());
+        return tower;
     }
     
 }

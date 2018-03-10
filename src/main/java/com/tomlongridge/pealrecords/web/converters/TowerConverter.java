@@ -20,7 +20,7 @@ implements Converter<com.tomlongridge.pealrecords.service.domain.Tower, Tower> {
         
         final Tower target = new Tower();
         
-        target.setId(source.getId());
+        target.setID(source.getId());
         target.setDedication(source.getDedication());
         target.setArea(source.getArea());
         target.setTown(source.getTown());
